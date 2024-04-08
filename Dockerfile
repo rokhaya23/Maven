@@ -1,11 +1,14 @@
-# Utilisez une image OpenJDK comme base
-FROM openjdk:11-jre-slim
+# Utiliser une image de base contenant Java 17
+FROM openjdk:17
 
-# Copiez le fichier JAR construit dans l'image
-COPY target/votre-application.jar /app/votre-application.jar
-
-# Définissez le répertoire de travail
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Commande d'exécution de l'application Java
-CMD ["java", "-jar", "votre-application.jar"]
+# Copier le code source de votre application Java dans le conteneur
+COPY . /app
+
+# Compiler votre application Java
+RUN javac src/main/java/org/example/App.java
+
+# Commande pour démarrer l'application Java
+CMD ["java", "-cp", "src/main/java", "org.example.App"]
