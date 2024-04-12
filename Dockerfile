@@ -1,4 +1,4 @@
-# Utiliser une image de base contenant Java 17
+# Utiliser une image de base contenant Java 11
 FROM openjdk:11
 
 # Définir le répertoire de travail dans le conteneur
